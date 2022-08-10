@@ -1,0 +1,30 @@
+noscript
+{
+	background-color: #800000;
+	color: white;
+	display: flex;
+		flex-direction: column;
+		justify-content: center;
+	height: 100%;
+		min-height: 100%;
+	width: 100%;
+}
+
+noscript div
+{
+	width: 60%;
+	margin: 0px auto;
+}
+
+noscript p
+{
+	margin-top: .5em;
+}
+
+noscript h1
+{
+	font-size: 40px;
+	font-weight: normal;
+	margin-bottom: .5em;
+	margin-top: -10vh;
+}
