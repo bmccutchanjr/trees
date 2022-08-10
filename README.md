@@ -5,7 +5,7 @@ Trees is a utility inspired by "trees" logic puzzles.  It's intended to assist p
 
 The goal of the puzzle it to place 'trees' in the correct location with no hints other than the visual configuration of the puzzle.
 
-It does this by solving the puzzle.  There are two modes, validator and solver.  Both used from a single front-end.
+Trees does this by solving the puzzle with two distict methodologies: validator and solver.  Both are used from the same page.
 
 Trees is an interactive tool intended to help designers puzzle by puzzle.  It is not intended to allow players access, or allow designers to save and share their creations.  Puzzles are not saved.
 
