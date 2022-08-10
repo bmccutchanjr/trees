@@ -11,6 +11,8 @@ Trees is an interactive tool intended to help designers puzzle by puzzle.  It is
 
 Trees uses HTML, CSS and JavaScript.
 
+For specific information on how to use the tool, see USEME.md.
+
 Validator
 ---------
 
