@@ -1,7 +1,7 @@
 Trees
 =====
 
-Trees is a utility inspired by "trees" logic puzzles.  It's intended to allow puzzle creators verify their puzzles can be solved with logic alone (no guessing or trial-and-error assumptions required) and that there is one and only one solution to the puzzle.
+Trees is a utility inspired by "trees" logic puzzles.  It's intended to assist puzzle creators to verify their puzzles can be solved with logic alone (no guessing or trial-and-error assumptions required) and that there is one and only one solution to the puzzle.
 
 The goal of the puzzle it to place 'trees' in the correct location with no hints other than the visual configuration of the puzzle.
 
