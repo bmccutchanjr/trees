@@ -17,28 +17,19 @@ function buildPage ()
 	const main = document.getElementsByTagName ("main")[0];
 	main.append (buildControlPanel());
 	main.append (buildPuzzlePanel (10));
-//	02		createDOMElement ("section",
-//	02		{
-//	02			"id":	"control-panel"
-//	02		}, main);
-//	02	
-//	02		createDOMElement ("section",
-//	02		{
-//	02			"id":	"puzzle-panel"
-//	02		}, main)
 }
 
-function buildControlPanel ()
-{	//	The control panel contains those elements a designer will use to configure the puzzle. 
-
-	const panel = createDOMElement ("section",
-	{
-		"class": "panel control-panel",
-		"id":	 "control-panel"
-	});
-
-	return panel;
-}
+//	03	function buildControlPanel ()
+//	03	{	//	The control panel contains those elements a designer will use to configure the puzzle. 
+//	03	
+//	03		const panel = createDOMElement ("section",
+//	03		{
+//	03			"class": "panel control-panel",
+//	03			"id":	 "control-panel"
+//	03		});
+//	03	
+//	03		return panel;
+//	03	}
 
 function buildPuzzlePanel ()
 {	//	The puzzle panel contains the puzzle. 

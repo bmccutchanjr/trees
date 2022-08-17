@@ -1,5 +1,8 @@
 //	This module contains code specifically associated with the puzzle
 
+const shapes = [];
+const activeShape = [];
+
 function buildPuzzleZone (size)
 {	//	Create an HTML <table> element and populate it with a number of empty cells.  These cells are potential
 	//	targets of a click event...
