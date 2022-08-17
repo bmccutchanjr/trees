@@ -34,9 +34,19 @@ function addSizeInput ()
 		if (i == puzzleSize) option.selected = true;
 	}
 
-//	perhaps add an on-change event listener here.  If the puzzle size is changed, undate the global size variable
-//	and redraw the puzzle space.
+	select.addEventListener ("change", event =>
+	{	event.preventDefault();
 
+		//	The size of the puzzle space has been changed...set the global size variable to the new value and
+		//	re-initialize the puzzle zone.
+
+		//	How do you find the value that has been selected?  For now just make it 14...
+		puzzleSize = 14;
+
+		const panel = document.getElementById ("puzzle-panel");
+		removePuzzleZone (panel);
+		panel.append (buildPuzzleZone (14));
+	})
 
 	return div;
 }

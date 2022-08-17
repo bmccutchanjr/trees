@@ -30,6 +30,15 @@ function buildPuzzleZone (size)
 	return table;
 }
 
+function removePuzzleZone (panel)
+{	//	Remove the current puzzle zone from the DOM...presumably because the size of the puzzle has been changed.
+
+	while (panel.firstChild)
+	{
+		panel.removeChild (panel.firstChild);
+	}
+}
+
 function addPuzzleEventHandler (puzzle)
 {	//	Add the event handler(s) to the puzzle.  For now, there is only a need to handle click events on the
 	//	individual cells.
