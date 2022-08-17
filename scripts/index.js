@@ -7,15 +7,7 @@ window.addEventListener ("load", event =>
 	document.getElementById ("sticky-wrapper").classList.remove ("hide");
 	document.getElementsByTagName ("footer")[0].classList.remove ("hide");
 
-//	01		const puzzle = buildPuzzleZone (14);
-//	01	
-//	01		puzzle.addEventListener ("click", event =>
-//	01		{	event.preventDefault();
-//	01			target = event.target;
-//	01	
-//	01			if (target.classList.contains ("puzzle-cell")) assignShape (target);
-//	01		})
-buildPage();
+	buildPage();
 })
 
 function buildPage ()
@@ -25,17 +17,15 @@ function buildPage ()
 	const main = document.getElementsByTagName ("main")[0];
 	main.append (buildControlPanel());
 	main.append (buildPuzzlePanel (10));
-	createDOMElement ("section",
-	{
-		"id":	"control-panel"
-	}, main);
-
-	createDOMElement ("section",
-	{
-		"id":	"puzzle-panel"
-	}, main)
-
-
+//	02		createDOMElement ("section",
+//	02		{
+//	02			"id":	"control-panel"
+//	02		}, main);
+//	02	
+//	02		createDOMElement ("section",
+//	02		{
+//	02			"id":	"puzzle-panel"
+//	02		}, main)
 }
 
 function buildControlPanel ()

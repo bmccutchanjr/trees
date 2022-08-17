@@ -1,14 +1,12 @@
-alert ("puzzle.js");
+//	This module contains code specifically associated with the puzzle
 
 function buildPuzzleZone (size)
 {	//	Create an HTML <table> element and populate it with a number of empty cells.  These cells are potential
 	//	targets of a click event...
 
-//	01		const main = document.getElementsByTagName ("main")[0];
 	//	The puzzle is a grid composed of an equal number of rows and columns (a square).  The parameter 'size' is the
 	//	number of cells in each row and column.
 
-//	01		const table = createDOMElement ("table", { }, main);
 	const table = createDOMElement ("table", { });
 	addPuzzleEventHandler (table);
 
