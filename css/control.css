@@ -1,0 +1,51 @@
+/*	This module contains the CSS rules to style the control panel.													*/
+
+/*	The following rules are for the puzzle size <select> element.													*/
+
+.size-selector
+{
+	margin-right: 10px;
+}
+
+/*	The following rules are for the single, double and triple tree selector buttons									*/ 
+
+.tree-selectors
+{
+	/* display: flex; */
+		/* flex-direction: row; */
+		/* flex-wrap: nowrap; */
+		/* justify-content: space-evenly; */
+	margin-top: 10px;
+	width: 100%;
+}
+
+.tree-selectors button
+{
+	--tree-button-background: #ffff7f;
+	background-color: var(--tree-button-background);
+	border: 1px solid var(--tree-button-background);
+	border-radius: 3px;
+	/* flex-grow: 0; */
+	/* flex-shrink: 0; */
+	font-size: 12px;
+	line-height: 1;
+	margin-top: 5px;
+	padding: 4px;
+		padding-top: 5px;
+	/* width: 32%; */
+	/* max-width: 150px; */
+	width: 150px;
+}
+
+.tree-selectors button:hover
+{
+	background-color: #ffffcf;
+}
+
+
+.tree-selectors button.selected
+{
+	--tree-button-selected-background: yellow;
+	background-color: var(--tree-button-selected-background);
+	border-color: var(--tree-button-selected-background);
+}

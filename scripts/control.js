@@ -26,8 +26,11 @@ function addSizeInput ()
 
 	const div = createDOMElement ("div", { })
 
-	const span = createDOMElement ("span", { "innerText": "Set number of rows / column:" }, div);
-	const select = createDOMElement ("select", { }, div);
+	const select = createDOMElement ("select",
+	{
+		"class":	"size-selector"
+	}, div);
+	
 	for (let i=8; i<17; i++)
 	{
 		const option = createDOMElement ("option",
@@ -37,6 +40,8 @@ function addSizeInput ()
 		}, select);
 		if (i == puzzleSize) option.selected = true;
 	}
+
+	createDOMElement ("span", { "innerText": "Set number of rows / column:" }, div);
 
 	select.addEventListener ("change", event =>
 	{	event.preventDefault();
@@ -72,30 +77,35 @@ function addNumberTreesSelectors ()
 	//	buttone once will set the number of trees as coorespond to the button, even if the number of trees
 	//	has already been selected.  Clicking the same button a second time will reset the tree count to undefined.
 
-	const div = createDOMElement ("div", { })
+	const selectors = createDOMElement ("div", { "class": "tree-selectors" } )
 
+	let div = createDOMElement ("div", { }, selectors);
 	createDOMElement ("button",
 	{
 		"class":	  "number-selector",
-		"id":		  "one-tree",
-		"innerText":  "ONE TREE",
+		"id":		  "single-tree",
+		"innerText":  "SINGLE TREE",
+		"title":	  "Click here to make this a 'single tree' puzzle",
 		"tree-count": 1
 	}, div);
 
-
+	div = createDOMElement ("div", { }, selectors);
 	createDOMElement ("button",
 	{
 		"class":	  "number-selector",
-		"id":		  "two-trees",
-		"innerText":  "TWO TREES",
+		"id":		  "double-trees",
+		"innerText":  "DOUBLE TREE",
+		"title":	  "Click here to make this a 'double tree' puzzle",
 		"tree-count": 2
 	}, div);
 
+	div = createDOMElement ("div", { }, selectors);
 	createDOMElement ("button",
 	{
 		"class":	  "number-selector",
-		"id":		  "three-trees",
-		"innerText":  "THREE TREES",
+		"id":		  "triple-trees",
+		"innerText":  "TRIPLE TREE",
+		"title":	  "Click here to make this a 'triple tree' puzzle",
 		"tree-count": 3
 	}, div);
 
@@ -103,5 +113,5 @@ function addNumberTreesSelectors ()
 //	many event handlers may not be a issue.  Separate event handlers for each button or configuration option
 //	will simplify the code quite a bit and make it easier to read.
 
-	return div;
+	return selectors;
 }
