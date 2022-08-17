@@ -30,7 +30,7 @@ function addSizeInput ()
 	{
 		"class":	"size-selector"
 	}, div);
-	
+
 	for (let i=8; i<17; i++)
 	{
 		const option = createDOMElement ("option",
@@ -41,7 +41,7 @@ function addSizeInput ()
 		if (i == puzzleSize) option.selected = true;
 	}
 
-	createDOMElement ("span", { "innerText": "Set number of rows / column:" }, div);
+	createDOMElement ("span", { "innerText": "Set the number of rows and columns" }, div);
 
 	select.addEventListener ("change", event =>
 	{	event.preventDefault();
@@ -109,9 +109,53 @@ function addNumberTreesSelectors ()
 		"tree-count": 3
 	}, div);
 
-//	And this is where I put the event handler -- maybe.  There are not a lot of configuration options, so having
-//	many event handlers may not be a issue.  Separate event handlers for each button or configuration option
-//	will simplify the code quite a bit and make it easier to read.
+	selectors.addEventListener ("click", event => { numberSelectorClickEvent (event) } );
 
 	return selectors;
+}
+
+function numberSelectorClickEvent (event)
+{	//	Making the event handler for this event an anonymous in-line function makes for lengthy, and perhaps less
+	//	readable code.  So the event handler is a function call -- this function.
+
+	event.preventDefault();
+	target = event.target;
+
+	//	Click event listeners for the number-selector buttons.  I'm only interested in the number-selector buttons, so
+	//	ignore anything else.
+
+	if (target.tagName != "BUTTON") return;
+
+	//	And then get to the real work...
+
+	if (target.classList.contains ("selected"))
+	{	//	This is a button that was already clicked.  Clicking the same button twice should reset the number
+		//	of trees to the default value of undefined
+
+		treeCount = undefined;
+		resetNumberSelectorButton (target);
+	}
+	else
+	{	//	This event represents a button other than the currently selected button.  This button should now become
+		//	the selected button and all other buttons should now be de-selected.  Set the global variable treeCouunt
+		//	to coorespond with this button.
+
+		//	'reset' all of the selector buttons -- even the target of this event.  Hey, it doesn't hurt...
+
+		const parent = target.parentElement.parentElement;
+		const children = parent.getElementsByTagName ("button");
+		for (let i=0; i<children.length; i++) resetNumberSelectorButton (children[i]);
+
+		target.classList.add ("selected");
+		target.setAttribute ("title", "This puzzle is a '" + target.innerText.toLowerCase() + "' puzzle.  Click here to reset.");
+
+		treeCount = target.getAttribute ("tree-count");
+	}
+}
+
+function resetNumberSelectorButton (button)
+{	//	Reset the number-selector buttons...
+
+	button.classList.remove ("selected");
+	button.setAttribute ("title", "Click here to make this a '" + button.innerText.toLowerCase() + "' puzzle");
 }
