@@ -19,18 +19,6 @@ function buildPage ()
 	main.append (buildPuzzlePanel (10));
 }
 
-//	03	function buildControlPanel ()
-//	03	{	//	The control panel contains those elements a designer will use to configure the puzzle. 
-//	03	
-//	03		const panel = createDOMElement ("section",
-//	03		{
-//	03			"class": "panel control-panel",
-//	03			"id":	 "control-panel"
-//	03		});
-//	03	
-//	03		return panel;
-//	03	}
-
 function buildPuzzlePanel ()
 {	//	The puzzle panel contains the puzzle. 
 

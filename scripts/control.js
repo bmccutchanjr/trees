@@ -30,22 +30,26 @@ function addSizeInput ()
 	const select = createDOMElement ("select", { }, div);
 	for (let i=8; i<17; i++)
 	{
-		const option = createDOMElement ("option", { "innerText": i }, select);
+		const option = createDOMElement ("option",
+		{
+			"innerText": i,
+			"value":	 i
+		}, select);
 		if (i == puzzleSize) option.selected = true;
 	}
 
 	select.addEventListener ("change", event =>
 	{	event.preventDefault();
+		target = event.target;
 
 		//	The size of the puzzle space has been changed...set the global size variable to the new value and
 		//	re-initialize the puzzle zone.
 
-		//	How do you find the value that has been selected?  For now just make it 14...
-		puzzleSize = 14;
-
 		const panel = document.getElementById ("puzzle-panel");
 		removePuzzleZone (panel);
-		panel.append (buildPuzzleZone (14));
+
+		puzzleSize = target.value;
+		panel.append (buildPuzzleZone (puzzleSize));
 	})
 
 	return div;
