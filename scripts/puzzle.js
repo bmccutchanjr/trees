@@ -1,31 +1,16 @@
-window.addEventListener ("load", event =>
-{	event.preventDefault();
-
-	//	The page is hidden by default to improve the appearance of the <noscript> tag.  Obviously I want to undo that
-	//	immediately if JavaScript is allowed by the browser...and if this script is running, it is.
-
-	document.getElementById ("sticky-wrapper").classList.remove ("hide");
-	document.getElementsByTagName ("footer")[0].classList.remove ("hide");
-
-	const puzzle = buildPuzzleZone (10);
-
-	puzzle.addEventListener ("click", event =>
-	{	event.preventDefault();
-		target = event.target;
-alert ("clicked...");
-		if (target.classList.contains ("puzzle-cell")) assignShape (target);
-	})
-})
+alert ("puzzle.js");
 
 function buildPuzzleZone (size)
 {	//	Create an HTML <table> element and populate it with a number of empty cells.  These cells are potential
 	//	targets of a click event...
 
-	const main = document.getElementsByTagName ("main")[0];
+//	01		const main = document.getElementsByTagName ("main")[0];
 	//	The puzzle is a grid composed of an equal number of rows and columns (a square).  The parameter 'size' is the
 	//	number of cells in each row and column.
 
-	const table = createDOMElement ("table", { }, main);
+//	01		const table = createDOMElement ("table", { }, main);
+	const table = createDOMElement ("table", { });
+	addPuzzleEventHandler (table);
 
 	for (let i=0; i<size; i++)
 	{
@@ -42,6 +27,18 @@ function buildPuzzleZone (size)
 	}
 
 	return table;
+}
+
+function addPuzzleEventHandler (puzzle)
+{	//	Add the event handler(s) to the puzzle.  For now, there is only a need to handle click events on the
+	//	individual cells.
+
+	puzzle.addEventListener ("click", event =>
+	{	event.preventDefault();
+		target = event.target;
+
+		if (target.classList.contains ("puzzle-cell")) assignShape (target);
+	})
 }
 
 function assignShape (cell)
