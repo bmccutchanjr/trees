@@ -14,6 +14,11 @@ function buildControlPanel ()
 
 	panel.append (addSizeInput());
 	panel.append (addNumberTreesSelectors());
+	panel.append (addShapeSelector());
+	const wrapper = createDOMElement ("div", { }, panel);
+	wrapper.append (addResetButton ());
+	wrapper.append (addValidatorButton ());
+	wrapper.append (addSolverButton ());
 
 	return panel;
 }
@@ -79,7 +84,7 @@ function addNumberTreesSelectors ()
 
 	const selectors = createDOMElement ("div", { "class": "tree-selectors" } )
 
-	let div = createDOMElement ("div", { }, selectors);
+	let div = createDOMElement ("div", { "class": "wrapper" }, selectors);
 	createDOMElement ("button",
 	{
 		"class":	  "number-selector",
@@ -89,7 +94,7 @@ function addNumberTreesSelectors ()
 		"tree-count": 1
 	}, div);
 
-	div = createDOMElement ("div", { }, selectors);
+	div = createDOMElement ("div", { "class": "wrapper" }, selectors);
 	createDOMElement ("button",
 	{
 		"class":	  "number-selector",
@@ -99,7 +104,7 @@ function addNumberTreesSelectors ()
 		"tree-count": 2
 	}, div);
 
-	div = createDOMElement ("div", { }, selectors);
+	div = createDOMElement ("div", { "class": "wrapper" }, selectors);
 	createDOMElement ("button",
 	{
 		"class":	  "number-selector",
@@ -158,4 +163,100 @@ function resetNumberSelectorButton (button)
 
 	button.classList.remove ("selected");
 	button.setAttribute ("title", "Click here to make this a '" + button.innerText.toLowerCase() + "' puzzle");
+}
+
+function addShapeSelector ()
+{	//	Add elements to allow the designer to assign cells in the puzzle zone to specific shapes.
+
+	const wrapper = createDOMElement ("div",
+	{
+		"class":	"wrapper",
+		"innerText":	"Click on a cell in the puzzle to add to a shape."
+	})
+
+	const div = createDOMElement ("div", { "class":	"shape-wrapper" }, wrapper);
+
+	createDOMElement ("button",
+//	createDOMElement ("div",
+	{
+		"class":	"small-button",
+		"id:":		"previous-shape",
+		"innerText":	"<"
+	}, div)
+
+//		createDOMElement ("span",
+//		createDOMElement ("button",
+	createDOMElement ("div",
+	{
+		"class":	"shape-span background-1",
+		"id:":		"selected-shape",
+		"innerText":	"SHAPE 1"
+	}, div)
+
+	createDOMElement ("button",
+//	createDOMElement ("div",
+	{
+		"class":	"small-button",
+		"id:":		"next-shape",
+		"innerText":	">"
+	}, div)
+
+	return wrapper;
+}
+
+function addResetButton ()
+{	//	Add a 'reset' button.
+
+	const div = document.createElement ("div");
+	createDOMElement ("button",
+	{
+		"id":	"reset-button",
+		"innerText":	"RESET THE PUZZLE	",
+		"title":	"Reset the puzzle configuration.  All of your changes will be lost."
+	}, div)
+
+//	Add a click handler.  The page should be returned to it's initial state.  Perhaps this handler should be
+//	added to the <div> that wraps these button...that's one event listener instead of three.
+//	
+//	This could be accomplished by reloading the page -- and maybe it should be.
+
+	return div;	
+}
+
+function addValidatorButton ()
+{	//	Add a 'validator' button.
+
+//	Add a button.  Validator should be hidden by default, and only made visible if all of the required configuration
+//	(including all cells added to a shape) is complete.
+	const div = document.createElement ("div");
+	createDOMElement ("button",
+	{
+		"class":	"hide",
+		"id":		"validator-button",
+		"innerText":	"VALIDATE THE PUZZLE",
+		"title":	"Verify the puzzle has a solution (hopefully one)"
+	}, div)
+
+//	Add the click event handler
+
+	return div;	
+}
+
+function addSolverButton ()
+{	//	Add a 'solver' button.
+
+//	Add a button.  Solver should be hidden by default, and only made visible if all of the required configuration
+//	(including all cells added to a shape) is complete.
+	const div = document.createElement ("div");
+	createDOMElement ("button",
+	{
+		"class":	"hide",
+		"id":		"solver-button",
+		"innerText":	"SoOLVE THE PUZZLE",
+		"title":	"Solve the puzzle...verifies no guess work is required"
+	}, div)
+
+//	Add the click event handler
+
+	return div;	
 }
