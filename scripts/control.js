@@ -177,31 +177,67 @@ function addShapeSelector ()
 	const div = createDOMElement ("div", { "class":	"shape-wrapper" }, wrapper);
 
 	createDOMElement ("button",
-//	createDOMElement ("div",
 	{
 		"class":	"small-button",
-		"id:":		"previous-shape",
+		"id":		"previous-shape",
 		"innerText":	"<"
 	}, div)
 
-//		createDOMElement ("span",
-//		createDOMElement ("button",
 	createDOMElement ("div",
 	{
 		"class":	"shape-span background-1",
-		"id:":		"selected-shape",
-		"innerText":	"SHAPE 1"
+		"id":		"selected-shape",
+		"innerText":	shapeSelectorText (1),
+		"number":	1
 	}, div)
 
 	createDOMElement ("button",
-//	createDOMElement ("div",
 	{
 		"class":	"small-button",
-		"id:":		"next-shape",
+		"id":		"next-shape",
 		"innerText":	">"
 	}, div)
 
+	wrapper.addEventListener ("click", event => { handleShapeSelector (event) });
+
 	return wrapper;
+}
+
+function handleShapeSelector (event)
+{	event.preventDefault();
+	target = event.target;
+
+	//	Click event handler for buttons in "shape selector".
+
+	//	As with other click event handlers, I am only interested in click events on the buttons.  Ignore
+	//	everything else.
+
+	if (target.tagName != "BUTTON") return;
+
+	//	Now get on with it...
+
+	const shape = document.getElementById ("selected-shape");
+	let number = shape.getAttribute ("number");
+	shape.classList.remove ("background-" + number);
+
+	if (target.getAttribute ("id") == "previous-shape")
+	{
+		--number;
+		if (number == -1) number = puzzleSize - 1;
+	}
+	else
+	{
+		++number;
+		if (number == puzzleSize) number = 0;
+	}
+
+	shape.classList.add ("background-" + number);
+	shape.innerText = shapeSelectorText (number);
+	shape.setAttribute ("number", number);
+}
+
+function shapeSelectorText (number)
+{	return "SHAPE " + number;
 }
 
 function addResetButton ()
