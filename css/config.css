@@ -33,13 +33,14 @@ button:hover
 .size-selector
 {
 	margin-right: 10px;
+	margin-top: 10px;
 }
 
 /*	The following rules are for the single, double and triple tree selector buttons									*/ 
 
 .tree-selectors
 {
-	margin-top: 10px;
+	margin-bottom: 10px;
 	width: 100%;
 }
 

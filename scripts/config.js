@@ -3,8 +3,6 @@
 //
 //	Code that deals specifically with the puzzle and shape configuration is in puzzle.js.
 
-//	01	Rename control panel, since it doesn't actually control anything.  It's now the config-panel
-
 function buildConfigPanel ()
 {	//	The config panel contains those elements a designer will use to configure the puzzle. 
 
@@ -14,11 +12,8 @@ function buildConfigPanel ()
 		"id":	 "config-panel"
 	});
 
-//	01		panel.append (addSizeInput());
-//	01		panel.append (addNumberTreesSelectors());
 	panel.append (addNumberTreesSelectors());
 	panel.append (addSizeInput());
-//	01 ends
 	panel.append (addShapeSelector());
 	const wrapper = createDOMElement ("div", { }, panel);
 	wrapper.append (addResetButton ());
@@ -30,7 +25,7 @@ function buildConfigPanel ()
 
 let puzzleSize = 10;
 
-function addSizeInput ()
+function addSizeInput (minSize = 10, selected = 10)
 {	//	Puzzles are a grid composed of an equal number of rows and columns (a square).  The parameter 'size' is the
 	//	number of cells in each row and column.
 
@@ -41,14 +36,14 @@ function addSizeInput ()
 		"class":	"size-selector"
 	}, div);
 
-	for (let i=8; i<17; i++)
+	for (let i=minSize; i<17; i++)
 	{
 		const option = createDOMElement ("option",
 		{
 			"innerText": i,
 			"value":	 i
 		}, select);
-		if (i == puzzleSize) option.selected = true;
+		if (i == selected) option.selected = true;
 	}
 
 	createDOMElement ("span", { "innerText": "Set the number of rows and columns" }, div);
@@ -95,6 +90,8 @@ function addNumberTreesSelectors ()
 		"class":	  "number-selector",
 		"id":		  "single-tree",
 		"innerText":  "SINGLE TREE",
+		"min-size":	  8,
+		"default":	  8,
 		"title":	  "Click here to make this a 'single tree' puzzle",
 		"tree-count": 1
 	}, div);
@@ -102,10 +99,12 @@ function addNumberTreesSelectors ()
 	div = createDOMElement ("div", { "class": "wrapper" }, selectors);
 	createDOMElement ("button",
 	{
-		"class":	  "number-selector",
+		"class":	  "number-selector selected",
 		"id":		  "double-trees",
 		"innerText":  "DOUBLE TREE",
-		"title":	  "Click here to make this a 'double tree' puzzle",
+		"min-size":	  10,
+		"default":	  10,
+		"title":	  "This puzzle is a 'double tree' puzzle.  Click here to reset.",
 		"tree-count": 2
 	}, div);
 
@@ -115,6 +114,8 @@ function addNumberTreesSelectors ()
 		"class":	  "number-selector",
 		"id":		  "triple-trees",
 		"innerText":  "TRIPLE TREE",
+		"min-size":	  12,
+		"default":	  14,
 		"title":	  "Click here to make this a 'triple tree' puzzle",
 		"tree-count": 3
 	}, div);

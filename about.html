@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0">
+	<title>Trees Puzzle Validation</title>
+
+	<link href="css/about.css" rel="stylesheet" type="text/css">
+	<link href="css/index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div id="sticky-wrapper" class="hide">
+		<header>Trees Puzzle Validation</header>
+
+		<main>
+			<p>This page is intended to assist designers of "trees" logic puzzles verify their puzzles.  It has two
+			main functions; validator and solver.</p>
+
+			<p>This application can be configured for one, two or three tree puzzles with 8 to 16 rows and columns.</p>
+
+			<p>Validator</p>
+			<p>Validator utilizes a brute force branching tree algorthm to find all solutions to a puzzle.  No
+			logical inferences are made about the puzzle or the puzzle configuration.  Validator simply attempts to
+			place a "tree" in every cell of the puzzle where a tree might ba allowed allowed according tree logic rules
+			and the puzzle configuration.  Once a tree is succesfully inserted, validator attempts to place a tree in
+			the next cell.</p>
+
+			<p>Validator will continue in this fashion until the puzzle in solved or (more likely) the placement of
+			trees produces an invalid solution.  If a solution is invalid, validator abandons the current branc of the
+			tree and continues from the last legally valid tree.</p>
+
+			<p>Validator looks at every possible configuration of trees and will find all (hopefully just one)
+			solutions.</p>
+
+			<p>Validator can take a VERY long time to run.</p>
+
+			<p>Solver</p>
+			<p>Solver is used to demonstrate a puzzle can be solved withlogic alone.  It uses the same logic a person
+			might and attempts to solve the puzzle directly, applying them repeatedly until the puzzle is solved or
+			it is unable to make additional progress.</p>
+
+			<p>Note that solver will always be a work in progress and may not be capable of solving every puzzle.  New
+			rules can be added, increasing solver's 'expertise'.</p>
+		</main>
+		<div id="sticky-push"></div>
+	</div>
+
+	<footer class="hide">All Rights Reserved</footer>
+</body>
+
+<script src="https://bmccutchanjr.github.io/create-dom-element/createDOMElement.js" language="JavaScript"></script>
+<script src="scripts/about.js" language="JavaScript"></script>
+</html>
