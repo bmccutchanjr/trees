@@ -15,7 +15,7 @@ function buildConfigPanel ()
 	panel.append (addNumberTreesSelectors());
 	panel.append (addSizeInput());
 	panel.append (addShapeSelector());
-	const wrapper = createDOMElement ("div", { }, panel);
+	const wrapper = createDOMElement ("section", { }, panel);
 	wrapper.append (addResetButton ());
 	wrapper.append (addValidatorButton ());
 	wrapper.append (addSolverButton ());
@@ -82,7 +82,7 @@ function addNumberTreesSelectors ()
 	//	buttone once will set the number of trees as coorespond to the button, even if the number of trees
 	//	has already been selected.  Clicking the same button a second time will reset the tree count to undefined.
 
-	const selectors = createDOMElement ("div", { "class": "tree-selectors" } )
+	const selectors = createDOMElement ("section", { "class": "tree-selectors" } )
 
 	let div = createDOMElement ("div", { "class": "wrapper" }, selectors);
 	createDOMElement ("button",
@@ -174,10 +174,9 @@ function resetNumberSelectorButton (button)
 function addShapeSelector ()
 {	//	Add elements to allow the designer to assign cells in the puzzle zone to specific shapes.
 
-	const wrapper = createDOMElement ("div",
+	const wrapper = createDOMElement ("section",
 	{
 		"class":	"wrapper",
-		"innerText":	"Click on a cell in the puzzle to add to a shape."
 	})
 
 	const div = createDOMElement ("div", { "class":	"shape-wrapper" }, wrapper);
@@ -206,6 +205,11 @@ function addShapeSelector ()
 		"innerText":	">",
 		"title":	"Select the next shape.  The selector will wrap around to the beginning."
 	}, div)
+
+	createDOMElement ("div",
+	{
+		"innerText":	"Click on any cell in the puzzle space to add it to the currently selected shape."
+	}, wrapper)
 
 	wrapper.addEventListener ("click", event => { handleShapeSelector (event) });
 
@@ -265,7 +269,7 @@ function addResetButton ()
 
 		//	Reset the page by forcing it to reload...it seems the easiest way to do it...and it's okay to reload
 		//	from cache
-		
+
 		window.location.reload();
 	})
 
