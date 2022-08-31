@@ -253,17 +253,21 @@ function addResetButton ()
 {	//	Add a 'reset' button.
 
 	const div = document.createElement ("div");
-	createDOMElement ("button",
+	const reset = createDOMElement ("button",
 	{
 		"id":	"reset-button",
 		"innerText":	"RESET THE PUZZLE	",
 		"title":	"Reset the puzzle configuration.  All of your changes will be lost."
 	}, div)
 
-//	Add a click handler.  The page should be returned to it's initial state.  Perhaps this handler should be
-//	added to the <div> that wraps these button...that's one event listener instead of three.
-//	
-//	This could be accomplished by reloading the page -- and maybe it should be.
+	reset.addEventListener ("click", event =>
+	{	event.preventDefault();
+
+		//	Reset the page by forcing it to reload...it seems the easiest way to do it...and it's okay to reload
+		//	from cache
+		
+		window.location.reload();
+	})
 
 	return div;	
 }
