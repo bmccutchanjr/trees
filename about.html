@@ -6,12 +6,12 @@
 		  content="width=device-width, initial-scale=1.0">
 	<title>Trees Puzzle Validation</title>
 
-	<link href="css/about.css" rel="stylesheet" type="text/css">
 	<link href="css/index.css" rel="stylesheet" type="text/css">
+	<link href="css/about.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	<div id="sticky-wrapper" class="hide">
+	<div id="sticky-wrapper">
 		<header>Trees Puzzle Validation</header>
 
 		<main>
@@ -20,10 +20,14 @@
 
 			<p>This application can be configured for one, two or three tree puzzles with 8 to 16 rows and columns.</p>
 
+			<p>Please not that this application makes extensive use of JavaScript.  Although almost all browsers
+			allow JavaScript by default, some may not.  If you want to use this application, make sure that your browser
+			will allow JavaScript.</p>
+
 			<p>Validator</p>
 			<p>Validator utilizes a brute force branching tree algorthm to find all solutions to a puzzle.  No
 			logical inferences are made about the puzzle or the puzzle configuration.  Validator simply attempts to
-			place a "tree" in every cell of the puzzle where a tree might ba allowed allowed according tree logic rules
+			place a "tree" in every cell of the puzzle where a tree might be allowed according tree logic rules
 			and the puzzle configuration.  Once a tree is succesfully inserted, validator attempts to place a tree in
 			the next cell.</p>
 
