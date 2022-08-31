@@ -84,7 +84,7 @@ function buildPage ()
 	//	designer to interact with and configure the puzzle. 
 
 	const main = document.getElementsByTagName ("main")[0];
-	main.append (buildControlPanel());
+	main.append (buildConfigPanel());
 	main.append (buildPuzzlePanel (10));
 }
 

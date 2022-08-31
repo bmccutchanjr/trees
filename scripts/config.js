@@ -1,19 +1,24 @@
-//	This module contains the code to build and manipulate the "control panel".  The control panel is the collection
-//	of elements that allow a designer to initialize a puzzle: set size, number of trees, etc.
+//	This module contains the code to build and manipulate the "configuration panel".  The config panel is the
+//	collection of elements that allow a designer to initialize a puzzle: set size, number of trees, etc.
 //
 //	Code that deals specifically with the puzzle and shape configuration is in puzzle.js.
 
-function buildControlPanel ()
-{	//	The control panel contains those elements a designer will use to configure the puzzle. 
+//	01	Rename control panel, since it doesn't actually control anything.  It's now the config-panel
+
+function buildConfigPanel ()
+{	//	The config panel contains those elements a designer will use to configure the puzzle. 
 
 	const panel = createDOMElement ("section",
 	{
-		"class": "panel control-panel",
-		"id":	 "control-panel"
+		"class": "panel config-panel",
+		"id":	 "config-panel"
 	});
 
-	panel.append (addSizeInput());
+//	01		panel.append (addSizeInput());
+//	01		panel.append (addNumberTreesSelectors());
 	panel.append (addNumberTreesSelectors());
+	panel.append (addSizeInput());
+//	01 ends
 	panel.append (addShapeSelector());
 	const wrapper = createDOMElement ("div", { }, panel);
 	wrapper.append (addResetButton ());
