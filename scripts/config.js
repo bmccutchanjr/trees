@@ -186,7 +186,8 @@ function addShapeSelector ()
 	{
 		"class":	"small-button",
 		"id":		"previous-shape",
-		"innerText":	"<"
+		"innerText":	"<",
+		"title":	"Select the previous shape.  The selector will wrap around to the end."
 	}, div)
 
 	createDOMElement ("div",
@@ -194,14 +195,16 @@ function addShapeSelector ()
 		"class":	"shape-span background-1",
 		"id":		"selected-shape",
 		"innerText":	shapeSelectorText (1),
-		"number":	1
+		"number":	1,
+		"title":	"Any changes will be applied to this shape."
 	}, div)
 
 	createDOMElement ("button",
 	{
 		"class":	"small-button",
 		"id":		"next-shape",
-		"innerText":	">"
+		"innerText":	">",
+		"title":	"Select the next shape.  The selector will wrap around to the beginning."
 	}, div)
 
 	wrapper.addEventListener ("click", event => { handleShapeSelector (event) });
