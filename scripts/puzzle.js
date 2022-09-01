@@ -47,7 +47,7 @@ function removePuzzleZone (panel)
 	}
 }
 
-let currentSelectedShape = 5;
+//	let currentSelectedShape = 5;
 
 function addPuzzleEventHandler (puzzle)
 {	//	Add the event handler(s) to the puzzle.  For now, there is only a need to handle click events on the
@@ -62,10 +62,9 @@ function addPuzzleEventHandler (puzzle)
 		//	I have to know which shape is being manipulated...that's a property of the selected-shape element of
 		//	the shape selector.
 
-		const shape = document.getElementById ("selected-shape");
-		let number = shape.getAttribute ("number");
+		let number = getCurrentSelectedShape ()
 
-		const classToAssign = "background-" + number;
+		const classToAssign = getClassToAssign (number);
 
 		const parent = target.parentElement;
 		if (parent.classList.contains ("shape-unassigned"))
@@ -107,15 +106,23 @@ function addPuzzleEventHandler (puzzle)
 	})
 }
 
-function assignShape (cell)
-{	//	Assigns the cell that is the target of the click event to one of the "shapes" in the puzzle.  There are an
-	//	equal number of shapes as rows and columns in the puzzle.  Cells in a shape are identified by the color of
-	//	shape and color is, in turn, determined by the class: background-XX, where XX is the shape number.
+function getCurrentSelectedShape ()
+{	//	Cells are assigned to shapes by adding a class to the cell representing that shape.  In order to add
+	//	the correct class I have to know what the currently selected shape is...and that's a property of the
+	//	selector-span element in the shape-selector.
 
-	cell.classList.add ("background-11");
+		const shape = document.getElementById ("selected-shape");
+		return shape.getAttribute ("number");
 }
 
-//	function isThisShapeValid ()
+function getClassToAssign (number)
+{	//	In the interest of writing DRY and more meaningful code, this function is used to concatenate the
+	//	number of the currently selected shape.  It's one line of code and it's simple, but it may be used in
+	//	more than one place in the code.
+
+	return "background-" + number;
+}
+
 function isThisShapeValid (shapeNumber)
 {	//	This function will attempt to determine whether a shape is valid or not.  To be valid, a shape must contain
 	//	a number of 2x2 clusters equal to or greater than the number of trees in the puzzle (1, 2 or 3).
