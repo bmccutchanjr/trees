@@ -305,7 +305,7 @@ function addSolverButton ()
 	{
 		"class":	"hide",
 		"id":		"solver-button",
-		"innerText":	"SoOLVE THE PUZZLE",
+		"innerText":	"SOLVE THE PUZZLE",
 		"title":	"Solve the puzzle...verifies no guess work is required"
 	}, div)
 

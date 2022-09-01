@@ -1,4 +1,9 @@
-/*	This module contains the CSS rules that pertain directly to the puzzle											*/
+/*	Rules for the puzzle zone...																					*/
+/*																													*/
+/*	The puzzle zone is constructed as a <table> with the same number of cells per row as rows in the table (a		*/
+/*	square matrix).  Each cell contains one button which should be the full height and width of the cell.  These	*/
+/*	special purpose buttons and do not share configuration with other buttons on the site.							*/
+
 
 table
 {
@@ -14,14 +19,34 @@ td
 	font-size: 20px;
 	height:	var(--cell-height);
 	line-height: 1;
-	padding: 3px;
-		padding-top: 4px;
 	text-align: center;
 	width:  var(--cell-height);
 }
 
+td .cell-button
+{
+	background: none;
+	border: none;
+		border-radius: 0;
+	height: 100%;
+	line-height: 1;
+	padding: 3px;
+		padding-top: 4px;
+	width: 100%;
+}
+
 /*	The following rules are cell attributes that can (and must) be assigned dynamically based on the users input.	*/
-/*	Currently just background color, but that may change.															*/
+/*	Note that background-color is assigned to the table sell and NOT to the cell button.							*/
+
+td.shape-unassigned
+{
+	background-color: #3f3f3f;
+}
+
+td .cell-button.shape-invalid
+{
+	background-color: rgba(0, 0, 0, 0.5);
+}
 
 .background-0
 {	background-color: rgb(255, 255, 255);
